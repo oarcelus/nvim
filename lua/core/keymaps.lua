@@ -15,4 +15,9 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.scrolloff = 8
+
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
