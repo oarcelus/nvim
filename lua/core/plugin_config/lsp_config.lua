@@ -14,6 +14,9 @@ require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 lsp.setup()
 
 local cmp = require('cmp')
-local cmp_config = lsp.defaults.cmp_config({})
 
-cmp.setup(cmp_config)
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+  })
+})
