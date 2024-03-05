@@ -49,9 +49,19 @@ return require('packer').startup(function(use)
 
   use {'windwp/nvim-autopairs'}
 
-  use 'tpope/vim-fugitive'
   use 'theprimeagen/harpoon'
   use 'mbbill/undotree'
+  use 'numToStr/FTerm.nvim'
+
+  use {
+  'rmagatti/auto-session',
+  config = function()
+    require("auto-session").setup {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+    }
+  end
+}
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
