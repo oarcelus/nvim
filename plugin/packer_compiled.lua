@@ -140,6 +140,11 @@ _G.packer_plugins = {
     path = "/home/oarcelus/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["none-ls-extras.nvim"] = {
+    loaded = true,
+    path = "/home/oarcelus/.local/share/nvim/site/pack/packer/start/none-ls-extras.nvim",
+    url = "https://github.com/nvimtools/none-ls-extras.nvim"
+  },
   ["none-ls.nvim"] = {
     loaded = true,
     path = "/home/oarcelus/.local/share/nvim/site/pack/packer/start/none-ls.nvim",

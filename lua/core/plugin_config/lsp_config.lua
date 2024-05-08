@@ -4,12 +4,16 @@ lsp.preset("recommended")
 lsp.ensure_installed({
 	"rust_analyzer",
 	"fortls",
+	"ruff_lsp",
 	"pyright",
 })
 
 require("lspconfig").rust_analyzer.setup({})
 require("lspconfig").fortls.setup({})
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
 require("lspconfig").pyright.setup({
+	capabilities = capabilities,
 	settings = {
 		python = {
 			analysis = {
@@ -18,8 +22,21 @@ require("lspconfig").pyright.setup({
 				diagnosticMode = "openFilesOnly",
 			},
 		},
+		pyright = {
+			disableOrganizeImports = true,
+		},
 	},
 })
+
+require("lspconfig").ruff_lsp.setup({
+	init_options = {
+		settings = {
+			args = {},
+		},
+	},
+})
+
+require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
@@ -53,23 +70,5 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 end)
 
-require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 lsp.setup()
 
-local cmp = require("cmp")
-cmp.setup({
-	mapping = cmp.mapping.preset.insert({
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			local col = vim.fn.col(".") - 1
-
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-				fallback()
-			else
-				cmp.complete()
-			end
-		end, { "i", "s" }),
-	}),
-})

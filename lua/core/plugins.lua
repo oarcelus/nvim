@@ -62,7 +62,10 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "nvimtools/none-ls.nvim" })
+	use({
+		"nvimtools/none-ls.nvim",
+		requires = { "nvimtools/none-ls-extras.nvim" },
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
