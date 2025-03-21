@@ -30,5 +30,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 
+vim.keymap.set("n", "<C-n>", ":cnext<CR>")
+vim.keymap.set("n", "<C-p>", ":cprev<CR>")
+
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
