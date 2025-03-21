@@ -45,7 +45,13 @@ return require("packer").startup(function(use)
 			{ "rafamadriz/friendly-snippets" },
 		},
 	})
-
+  use({
+    "olimorris/codecompanion.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    }
+  })
 	use({ "windwp/nvim-autopairs" })
 
 	use({ "christoomey/vim-tmux-navigator" })

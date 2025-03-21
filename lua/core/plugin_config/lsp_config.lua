@@ -4,7 +4,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
 	"rust_analyzer",
 	"fortls",
-	"ruff_lsp",
+	"ruff",
 	"pyright",
 })
 
@@ -28,7 +28,7 @@ require("lspconfig").pyright.setup({
 	},
 })
 
-require("lspconfig").ruff_lsp.setup({
+require("lspconfig").ruff.setup({
 	init_options = {
 		settings = {
 			args = {},
@@ -56,6 +56,9 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>gd", function()
 		vim.diagnostic.setqflist()
 	end, opts)
+	vim.keymap.set("n", "<leader>tf", function()
+		vim.lsp.buf.format({ async = true })
+	end, {})
 	vim.keymap.set("n", "<leader>grn", function()
 		vim.lsp.buf.rename()
 	end, opts)
