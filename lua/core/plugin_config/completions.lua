@@ -1,5 +1,12 @@
 local cmp = require("cmp")
 cmp.setup({
+	sources = {
+		{ name = "codecompanion" },
+		{ name = "nvim_lsp" },
+		{ name = "buffer" },
+		{ name = "path" },
+		{ name = "luasnip" },
+	},
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp.mapping(function(fallback)

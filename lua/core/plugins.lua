@@ -24,34 +24,24 @@ return require("packer").startup(function(use)
 		tag = "0.1.4",
 		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-live-grep-args.nvim" } },
 	})
+	use("neovim/nvim-lspconfig")
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-buffer")
+	use("saadparwaiz1/cmp_luasnip")
+	use("L3MON4D3/LuaSnip")
+	use("rafamadriz/friendly-snippets")
+
 	use({
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
+		"olimorris/codecompanion.nvim",
 		requires = {
-			{ "neovim/nvim-lspconfig" },
-			{
-				"williamboman/mason.nvim",
-				run = function()
-					pcall(vim.cmd, "MasonUpdate")
-				end,
-			},
-			{ "williamboman/mason-lspconfig.nvim" },
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-path" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
 	})
-  use({
-    "olimorris/codecompanion.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    }
-  })
 	use({ "windwp/nvim-autopairs" })
 
 	use({ "christoomey/vim-tmux-navigator" })

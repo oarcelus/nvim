@@ -31,10 +31,3 @@ companion.setup({
 	},
 })
 
-local cmp = require("cmp")
-
-cmp.setup({
-	sources = {
-		{ name = "codecompanion" },
-	},
-})
